@@ -14,6 +14,7 @@ void bubbleSort(int arr[], int n) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
     const int size = 1000;
     int arr[size];
 

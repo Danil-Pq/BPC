@@ -2,6 +2,14 @@
 #include <cstdlib> // для rand и srand
 #include <chrono>  // для измерения времени
 
+// Функция для вывода массива
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 // Функция пузырьковой сортировки
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; ++i) {
@@ -19,10 +27,14 @@ int main() {
     int arr[size];
 
     // Заполнение массива случайными числами
-    std::srand(std::time(0)); // Инициализация генератора случайных чисел
+    std::srand(static_cast<unsigned int>(std::time(0))); // Инициализация генератора случайных чисел
     for (int i = 0; i < size; ++i) {
         arr[i] = std::rand() % 10000; // Случайные числа от 0 до 9999
     }
+
+    // Вывод массива до сортировки
+    std::cout << "Массив до сортировки:" << std::endl;
+    printArray(arr, size);
 
     // Измерение времени выполнения сортировки
     auto start = std::chrono::high_resolution_clock::now();
@@ -33,8 +45,13 @@ int main() {
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     std::cout << "Время выполнения сортировки: " << duration.count() << " мс" << std::endl;
 
+    // Вывод массива после сортировки
+    std::cout << "Массив после сортировки:" << std::endl;
+    printArray(arr, size);
+
     return 0;
 }
+
 
 Вывод
 Время выполнения сортировки: 5 мс

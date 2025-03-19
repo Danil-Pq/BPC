@@ -44,7 +44,7 @@ public:
     // Удаление элемента из стека (pop)
     void pop() {
         if (isEmpty()) {
-            std::cerr << "Stack is empty! Cannot pop." << std::endl;
+            std::cerr << "Стек пуст! Невозможно вытолкнуть." << '\n';
             return;
         }
         Node* temp = top; // Сохраняем текущую вершину
@@ -58,7 +58,7 @@ public:
     // Получение значения вершины стека (peek)
     int peek() const {
         if (isEmpty()) {
-            std::cerr << "Stack is empty! Cannot peek." << std::endl;
+            std::cerr << "Стек пуст! Невозможно заглянуть." << '\n';
             return -1; // Возвращаем -1 в случае ошибки
         }
         return top->data; // Возвращаем данные вершины
@@ -67,12 +67,12 @@ public:
     // Вывод содержимого стека
     void print() const {
         Node* current = top;
-        std::cout << "Stack (top to bottom): ";
+        std::cout << "Стек (сверху вниз): ";
         while (current != nullptr) {
             std::cout << current->data << " ";
             current = current->prev; // Идем от вершины вниз
         }
-        std::cout << std::endl;
+        std::cout << '\n';
     }
 };
 
@@ -83,21 +83,21 @@ int main() {
     stack.push(20);
     stack.push(30);
 
-    stack.print(); // Stack (top to bottom): 30 20 10
+    stack.print(); // Стек (сверху вниз): 30 20 10
 
-    std::cout << "Top element: " << stack.peek() << std::endl; // Top element: 30
-
-    stack.pop();
-    stack.print(); // Stack (top to bottom): 20 10
+    std::cout << "Верхний элемент: " << stack.peek() << '\n'; // Верхний элемент: 30
 
     stack.pop();
+    stack.print(); // Стопка (сверху вниз): 20 10
+
     stack.pop();
-    stack.pop(); // Stack is empty! Cannot pop.
+    stack.pop();
+    stack.pop(); // Стек пуст! Невозможно вытолкнуть.
 
     return 0;
 }
 
-Вывод
-Stack (top to bottom): 30 20 10 
-Top element: 30
-Stack (top to bottom): 20 10 
+Вывод 
+Стек (сверху вниз): 30 20 10 
+Верхний элемент: 30
+Стек (сверху вниз): 20 10 
